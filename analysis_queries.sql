@@ -32,17 +32,17 @@ WHERE candidate_name IS NULL OR candidate_name = '';
 
 SELECT COUNT(*) AS Null_EVM_Votes
 FROM election_result_2024
-WHERE EVM_votes IS NULL
-GROUP BY EVM_votes;
+WHERE EVM_votes IS NULL;
+
 
 -- Total records with missing Total votes
 
 SELECT COUNT(*) AS Null_Total_Votes
 FROM election_result_2024
-WHERE total_votes IS NULL
-GROUP BY total_votes;
+WHERE total_votes IS NULL;
 
--- Remove duplicate records with NULL vote data
+
+-- Remove duplicate records or NULL vote data
 
 DELETE FROM election_result_2024
 WHERE EVM_votes IS NULL AND total_votes IS NULL;
